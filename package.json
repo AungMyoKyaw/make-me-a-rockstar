@@ -1,0 +1,45 @@
+{
+  "name": "make-me-a-rockstar",
+  "version": "1.0.0",
+  "description": "Make you a Rockstar Polyglot Programmer",
+  "scripts": {
+    "test": "mocha -r ts-node/register ./test/*.spec.ts -t 6e4",
+    "demo": "ts-node src/cli.ts --year='1'",
+    "build": "tsc"
+  },
+  "bin": {
+    "rockstar": "./dist/src/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AungMyoKyaw/make-me-a-rockstar.git"
+  },
+  "keywords": [
+    "Rockstar",
+    "Polyglot",
+    "Programmer"
+  ],
+  "author": "Aung Myo Kyaw",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AungMyoKyaw/make-me-a-rockstar/issues"
+  },
+  "homepage": "https://github.com/AungMyoKyaw/make-me-a-rockstar#readme",
+  "devDependencies": {
+    "@types/execa": "^0.9.0",
+    "@types/mocha": "^5.2.6",
+    "execa": "^1.0.0",
+    "mocha": "^6.1.4",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@types/meow": "^5.0.0",
+    "@types/node": "^11.13.8",
+    "@types/ora": "^3.2.0",
+    "isomorphic-git": "^0.54.2",
+    "meow": "^5.0.0",
+    "ora": "^3.4.0",
+    "react": "^16.8.6"
+  }
+}
