@@ -1,10 +1,12 @@
 #!/usr/bin/env node
+import fs from 'fs';
 import meow from 'meow';
 import events from 'events';
 import { ui } from './ui';
 import { toDays, commitHistory, initRepo, commit } from './utilities';
 import { codeGen, extGen, commitMessageGen, langs } from './data';
 
+const pfs = fs.promises;
 const myEmitter = new events();
 
 const cli = meow(
@@ -12,6 +14,7 @@ const cli = meow(
 	Usage
 	  $ rockstar <input>
   Options
+    --polyglot
     --lang
     --day
     --month
@@ -24,8 +27,11 @@ const cli = meow(
 `,
   {
     flags: {
+      polyglot: {
+        type: 'boolean'
+      },
       lang: {
-        default: '',
+        default: 'javascript',
         type: 'string'
       },
       day: {
@@ -52,7 +58,7 @@ const cli = meow(
   }
 );
 
-const { email, name, lang, day, month, year } = cli.flags;
+const { email, name, lang, day, month, year, polyglot } = cli.flags;
 const days = toDays(day, month, year);
 
 //initialize UI
@@ -61,25 +67,22 @@ ui(myEmitter);
 //start progress
 myEmitter.emit('start');
 
-const langLists = lang ? [lang] : langs;
+const langLists = polyglot ? langs : [lang];
 
 (async () => {
   try {
     await Promise.all(
       langLists.map(async lang => {
-        myEmitter.emit(
-          'updateStatus',
-          `Making you a rockstar ${lang} programmer`
-        );
         const code = codeGen(lang);
         const dir = `./make-me-a-rockstar`;
         const file = `${dir}/${lang}.${extGen(lang)}`;
         const logs = commitHistory(days);
         await initRepo(dir);
+        await pfs.appendFile(file, `${code}\n`);
         await Promise.all(
           logs.map(async date => {
             const message = commitMessageGen();
-            await commit(dir, file, code, message, date, email, name);
+            await commit(dir, message, date, email, name);
             myEmitter.emit(
               'updateStatus',
               `Making you a rockstar ${lang} programmer`
@@ -88,11 +91,10 @@ const langLists = lang ? [lang] : langs;
         );
       })
     );
+    myEmitter.emit('updateStatus', `You are now a rockstar programmer`);
     myEmitter.emit('stop');
   } catch (err) {
-    console.log(err);
+    myEmitter.emit('fail', err.message);
     process.exit(1);
   }
 })();
-
-// cli.showHelp(0);

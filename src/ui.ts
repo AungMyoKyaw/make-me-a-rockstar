@@ -6,7 +6,7 @@ const ui = (myEmitter: any) => {
   myEmitter.on('start', () => {
     spinner = Ora({
       text: 'Making you a rockstar programmer',
-      spinner: 'dots'
+      spinner: 'weather'
     }).start();
   });
 
@@ -14,8 +14,12 @@ const ui = (myEmitter: any) => {
     spinner.text = text;
   });
 
-  myEmitter.on('stop', (text: string) => {
+  myEmitter.on('stop', () => {
     spinner.succeed();
+  });
+
+  myEmitter.on('fail', (text: string) => {
+    spinner.fail(text);
   });
 };
 

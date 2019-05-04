@@ -1,5 +1,9 @@
-import * as git from 'isomorphic-git';
 import fs from 'fs';
+import * as git from 'isomorphic-git';
+import { plugins } from 'isomorphic-git';
+
+const pfs = fs.promises;
+plugins.set('fs', fs);
 
 const toDays = (
   day: number = 0,
@@ -22,25 +26,22 @@ const commitHistory = (days: number): Date[] => {
 };
 
 const initRepo = async (dir: string): Promise<void> => {
-  if (!fs.existsSync(dir)) {
+  const exist = fs.existsSync(dir);
+  if (!exist) {
     fs.mkdirSync(dir);
   }
-  await git.init({ fs, dir });
+  await git.init({ dir });
 };
 
 const commit = async (
   dir: string,
-  file: string,
-  code: string,
   message: string,
   date: Date,
   email: string,
   name: string
 ): Promise<void> => {
-  fs.appendFileSync(file, `${code}\n`);
-  await git.add({ fs, dir, filepath: '.' });
+  await git.add({ dir, filepath: '.' });
   await git.commit({
-    fs,
     dir,
     author: {
       name,

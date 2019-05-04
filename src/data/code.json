@@ -1,3 +1,70 @@
 {
-  "javascript": { "code": "console.log('Hello World')", "ext": "js" }
+  "javascript": {
+    "code": "console.log('Hello World')",
+    "ext": "js"
+  },
+  "c": {
+    "code": "printf('Hello world')",
+    "ext": "c"
+  },
+  "assembly": {
+    "code": "; 32-bit Linux implementation\n section     .text\n global      _start\n _start:\n mov     edx,len\n mov     ecx,msg\n mov     ebx,1 ; stdout\n mov     eax,4 ; sys_write id\n int     0x80\n \n mov     eax,1 ; exit id\n int     0x80\n section     .data\n msg     db  'Hello, world!',0xa,0x0 ;not sure if null needed, might as well as have it...\n len     equ $ - msg",
+    "ext": "s"
+  },
+  "bash": {
+    "code": "echo 'Hello, World!'",
+    "ext": "sh"
+  },
+  "clisp": {
+    "code": "(print \"Hello, World!\" )",
+    "ext": "cl"
+  },
+  "clojure": {
+    "code": "(println \"Hello world\")",
+    "ext": "clj"
+  },
+  "cobol": {
+    "code": "IDENTIFICATION DIVISION.\nPROGRAM-ID. HELLO-WORLD.\n* Rock Star hello world program\nPROCEDURE DIVISION.\nDISPLAY 'Hello world!'.\nSTOP RUN.",
+    "ext": "cobol"
+  },
+  "cpp": {
+    "code": "std::cout << 'Hello world' << std::endl",
+    "ext": "cpp"
+  },
+  "csharp": {
+    "code": "using System;\n\nclass HelloWorld\n{\nstatic void Main()\n{\nConsole.WriteLine(\"Hello world\");\n}\n }",
+    "ext": "cs"
+  },
+  "dart": {
+    "code": "main() { print('Hello Word'); }",
+    "ext": "dart"
+  },
+  "go": {
+    "code": "writeln('Hello world')",
+    "ext": "go"
+  },
+  "java": {
+    "code": "System.out.println('Hello world')",
+    "ext": "java"
+  },
+  "php": {
+    "code": "<?php echo 'hello world' ?>;",
+    "ext": "php"
+  },
+  "python": {
+    "code": "print('Hello world')",
+    "ext": "py"
+  },
+  "ruby": {
+    "code": "puts 'Hello world'",
+    "ext": "rb"
+  },
+  "sql": {
+    "code": "SELECT 'Hello World!';",
+    "ext": "sql"
+  },
+  "swift": {
+    "code": "import Foundation\n\nprint('Hello World!')",
+    "ext": "swift"
+  }
 }
