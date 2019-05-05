@@ -18,7 +18,7 @@ const commitHistory = (days: number): Date[] => {
     .fill('')
     .map((x, i) => {
       const timestamp = Date.now() - 24 * 60 * 60 * 1e3 * i;
-      const commitCount = randomNumber(1, 3);
+      const commitCount = randomNumber(1, 10);
       const dates = new Array(commitCount).fill('').map(y => {
         const date = setRandomHour(timestamp);
         return date;

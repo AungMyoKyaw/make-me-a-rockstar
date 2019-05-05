@@ -61,6 +61,6 @@ typings/
 .next
 
 # test
-make-me-a-rockstar
-dist
+/make-me-a-rockstar
+/bin
 .DS_Store

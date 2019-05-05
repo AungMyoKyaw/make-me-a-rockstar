@@ -1,14 +1,17 @@
 {
   "name": "make-me-a-rockstar",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "Make you a Rockstar Polyglot Programmer",
   "scripts": {
     "test": "mocha -r ts-node/register ./test/*.spec.ts -t 6e4",
     "demo": "ts-node src/cli.ts --year='1'",
     "build": "tsc"
   },
+  "files": [
+    "bin"
+  ],
   "bin": {
-    "rockstar": "./dist/src/cli.js"
+    "rockstar": "./bin/src/cli.js"
   },
   "repository": {
     "type": "git",
