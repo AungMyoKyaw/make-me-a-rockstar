@@ -91,7 +91,7 @@ const langLists = polyglot ? langs : [lang];
         );
       })
     );
-    myEmitter.emit('updateStatus', `You are now a rockstar programmer`);
+    myEmitter.emit('updateStatus', `You are now rockstar programmer`);
     myEmitter.emit('stop');
   } catch (err) {
     myEmitter.emit('fail', err.message);

@@ -63,3 +63,4 @@ typings/
 # test
 make-me-a-rockstar
 dist
+.DS_Store

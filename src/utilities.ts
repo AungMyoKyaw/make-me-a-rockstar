@@ -14,15 +14,36 @@ const toDays = (
 };
 
 const commitHistory = (days: number): Date[] => {
-  const dates: Date[] = new Array(days)
+  const dates = new Array(days)
     .fill('')
     .map((x, i) => {
       const timestamp = Date.now() - 24 * 60 * 60 * 1e3 * i;
-      const date = new Date(timestamp);
-      return date;
+      const commitCount = randomNumber(1, 3);
+      const dates = new Array(commitCount).fill('').map(y => {
+        const date = setRandomHour(timestamp);
+        return date;
+      });
+      return dates;
     })
+    .flat()
     .reverse();
   return dates;
+};
+
+const setRandomHour = (timestamp: number): Date => {
+  let date = new Date(timestamp);
+  const hour = randomNumber(0, 23);
+  const min = randomNumber(0, 59);
+  const sec = randomNumber(0, 59);
+  const millisec = randomNumber(0, 999);
+  date.setHours(hour, min, sec, millisec);
+  return date;
+};
+
+const randomNumber = (min: number, max: number): number => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 const initRepo = async (dir: string): Promise<void> => {

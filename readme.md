@@ -1,18 +1,18 @@
-# MAKE-ME-A-ROCKSTAR
+# [ MAKE-ME-A-ROCKSTAR ][make-me-a-rockstar]
 
 > Make you a rockstar polyglot developer
 
 ## Install
 
 ```shell
-npm install
+npm install -g make-me-a-rockstar
 ```
 
 ## Usage
 
 ```shell
 Usage
-  $ rockstar <input>
+  $ rockstar
 Options
   --polyglot
   --lang
@@ -26,6 +26,8 @@ Examples
   $ rockstar --lang=javascript --day=1 --month=1 --year=1 --email=user@example.com --name='Mr Test'
 ```
 
+**import generated `make-me-a-rockstar` repo to your github**
+
 ## Inspired by
 
 - [ rockstar ][inspired-by]
@@ -35,3 +37,4 @@ Examples
 MIT © [Aung Myo Kyaw](https://github.com/AungMyoKyaw)
 
 [inspired-by]: https://github.com/avinassh/rockstar
+[make-me-a-rockstar]: https://github.com/AungMyoKyaw/make-me-a-rockstar
