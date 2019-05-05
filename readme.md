@@ -28,6 +28,14 @@ Examples
 
 **import generated `make-me-a-rockstar` repo to your github**
 
+## Before
+
+[![screenshot-before][screenshot-before]][screenshot-url]
+
+## After
+
+[![screenshot-after][screenshot-after]][screenshot-url]
+
 ## Inspired by
 
 - [ rockstar ][inspired-by]
@@ -38,3 +46,6 @@ MIT © [Aung Myo Kyaw](https://github.com/AungMyoKyaw)
 
 [inspired-by]: https://github.com/avinassh/rockstar
 [make-me-a-rockstar]: https://github.com/AungMyoKyaw/make-me-a-rockstar
+[screenshot-before]: ./assets/before.png
+[screenshot-after]: ./assets/after.png
+[screenshot-url]: #

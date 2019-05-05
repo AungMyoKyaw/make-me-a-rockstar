@@ -12,7 +12,7 @@ const myEmitter = new events();
 const cli = meow(
   `
 	Usage
-	  $ rockstar <input>
+	  $ rockstar
   Options
     --polyglot
     --lang
