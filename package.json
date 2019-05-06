@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Make you a Rockstar Polyglot Programmer",
   "scripts": {
-    "test": "mocha -r ts-node/register ./test/*.spec.ts -t 6e4",
+    "test": "npm run build && mocha -r ts-node/register ./test/*.spec.ts -t 6e4",
     "demo": "ts-node src/cli.ts --year='1'",
     "build": "tsc"
   },
