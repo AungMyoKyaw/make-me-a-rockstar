@@ -13,19 +13,22 @@ const toDays = (
 };
 
 const commitHistory = (days: number): Date[] => {
-  const dates = new Array(days)
-    .fill('')
-    .map((x, i) => {
-      const timestamp = Date.now() - 24 * 60 * 60 * 1e3 * i;
-      const commitCount = randomNumber(1, 10);
-      const dates = new Array(commitCount).fill('').map(y => {
+  let dates: Date[] = [];
+  new Array(days).fill('').forEach((x, i) => {
+    const timestamp = Date.now() - 24 * 60 * 60 * 1e3 * i;
+    const commitCount = randomNumber(1, 10);
+    const tempDates = new Array(commitCount)
+      .fill('')
+      .map(y => {
         const date = setRandomHour(timestamp);
         return date;
+      })
+      .sort((a, b) => {
+        return b.getTime() - a.getTime();
       });
-      return dates;
-    })
-    .flat()
-    .reverse();
+    dates.push(...tempDates);
+  });
+  dates.reverse();
   return dates;
 };
 
