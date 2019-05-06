@@ -6,7 +6,6 @@ import { ui } from './ui';
 import { toDays, commitHistory, initRepo, commit } from './utilities';
 import { codeGen, extGen, commitMessageGen, langs } from './data';
 
-const pfs = fs.promises;
 const myEmitter = new events();
 
 const cli = meow(
@@ -78,7 +77,7 @@ const langLists = polyglot ? langs : [lang];
         const file = `${dir}/${lang}.${extGen(lang)}`;
         const logs = commitHistory(days);
         await initRepo(dir);
-        await pfs.appendFile(file, `${code}\n`);
+        fs.appendFileSync(file, `${code}\n`);
         await Promise.all(
           logs.map(async date => {
             const message = commitMessageGen();
