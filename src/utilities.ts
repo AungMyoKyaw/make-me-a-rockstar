@@ -2,7 +2,6 @@ import fs from 'fs';
 import * as git from 'isomorphic-git';
 import { plugins } from 'isomorphic-git';
 
-const pfs = fs.promises;
 plugins.set('fs', fs);
 
 const toDays = (
